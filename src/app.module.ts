@@ -19,6 +19,9 @@ import { MusicalInstrument } from './musical-instruments/entities/musical-instru
 import { RegionalSong } from './regional-songs/entities/regional-song.entity';
 import { Culinary } from './culinaries/entities/culinary.entity';
 import { TourismSpot } from './tourism-spots/entities/tourism-spot.entity';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -43,6 +46,7 @@ import { TourismSpot } from './tourism-spots/entities/tourism-spot.entity';
           RegionalSong,
           Culinary,
           TourismSpot,
+          User,
         ],
         synchronize: true,
       }),
@@ -58,6 +62,8 @@ import { TourismSpot } from './tourism-spots/entities/tourism-spot.entity';
     RegionalSongsModule,
     CulinariesModule,
     TourismSpotsModule,
+    AuthModule,
+    UsersModule,
   ],
 })
 export class AppModule {}
