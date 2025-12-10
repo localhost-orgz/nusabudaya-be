@@ -7,6 +7,7 @@ import { TraditionalDance } from "src/traditional-dances/entities/traditional-da
 import { TraditionalHouse } from "src/traditional-houses/entities/traditional-house.entity";
 import { TraditionalWeapon } from "src/traditional-weapons/entities/traditional-weapon.entity";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Quiz } from "src/quizzes/entities/quiz.entity";
 
 @Entity('provinces')
 export class Province {
@@ -27,6 +28,9 @@ export class Province {
 
   @Column({ nullable: true })
   icon_url: string;
+
+  @Column({ unique: true })
+  badge: string;
 
   @Column({ nullable: true })
   description: string;
@@ -57,4 +61,7 @@ export class Province {
 
   @OneToMany(() => Tradition, (tradition) => tradition.province)
   traditions: Tradition[];
+
+  @OneToMany(() => Quiz, (quiz) => quiz.province)
+  quizzes: Quiz[];
 }

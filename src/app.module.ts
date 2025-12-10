@@ -22,6 +22,8 @@ import { TourismSpot } from './tourism-spots/entities/tourism-spot.entity';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
+import { QuizzesModule } from './quizzes/quizzes.module';
+import { Quiz } from './quizzes/entities/quiz.entity';
 
 @Module({
   imports: [
@@ -47,6 +49,7 @@ import { User } from './users/entities/user.entity';
           Culinary,
           TourismSpot,
           User,
+          Quiz
         ],
         synchronize: true,
       }),
@@ -64,6 +67,7 @@ import { User } from './users/entities/user.entity';
     TourismSpotsModule,
     AuthModule,
     UsersModule,
+    QuizzesModule,
   ],
 })
 export class AppModule {}

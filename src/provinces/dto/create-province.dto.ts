@@ -14,6 +14,10 @@ export class CreateProvinceDto {
   @Min(0)
   area_km2: number;
 
+  @IsNotEmpty()
+  @IsString()
+  badge: string;
+
   @IsOptional()
   @IsDate()
   anniversary_date?: Date;
