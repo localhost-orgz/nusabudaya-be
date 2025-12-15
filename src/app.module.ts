@@ -22,6 +22,7 @@ import { TourismSpot } from './tourism-spots/entities/tourism-spot.entity';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
+import { AiModule } from './ai/ai.module';
 
 @Module({
   imports: [
@@ -31,11 +32,12 @@ import { User } from './users/entities/user.entity';
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get<string>('DB_HOST', 'localhost'),
-        port: Number(configService.get<string>('DB_PORT', '5432')),
-        username: configService.get<string>('DB_USERNAME', 'postgres'),
-        password: configService.get<string>('DB_PASSWORD', 'postgres'),
-        database: configService.get<string>('DB_DATABASE', 'nusa_budaya'),
+        url: configService.get<string>('DATABASE_URL'),
+        // host: configService.get<string>('DB_HOST', 'localhost'),
+        // port: Number(configService.get<string>('DB_PORT', '5432')),
+        // username: configService.get<string>('DB_USERNAME', 'postgres'),
+        // password: configService.get<string>('DB_PASSWORD', 'postgres'),
+        // database: configService.get<string>('DB_DATABASE', 'nusabudaya'),
         entities: [
           Province,
           TraditionalHouse,
@@ -64,6 +66,7 @@ import { User } from './users/entities/user.entity';
     TourismSpotsModule,
     AuthModule,
     UsersModule,
+    AiModule,
   ],
 })
 export class AppModule {}
