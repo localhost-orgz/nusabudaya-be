@@ -1,0 +1,283 @@
+import { CulinaryType } from "src/culinaries/entities/culinary.entity";
+
+const culinariesData = [
+  // --- SUMATERA ---
+  {
+    province_name: 'Nanggroe Aceh Darussalam',
+    name: 'Mie Aceh',
+    type: CulinaryType.MAKANAN,
+    description: 'Mie kuning tebal dengan irisan daging sapi, kambing atau makanan laut, disajikan dalam sup sejenis kari yang gurih dan pedas.',
+    image_url: 'https://example.com/culinary/mie-aceh.jpg',
+  },
+  {
+    province_name: 'Sumatera Utara',
+    name: 'Bika Ambon',
+    type: CulinaryType.JAJANAN,
+    description: 'Kue pipih berwarna kuning dengan permukaan yang nampak seperti pori-pori kulit, bertekstur kenyal dan harum pandan.',
+    image_url: 'https://example.com/culinary/bika-ambon.jpg',
+  },
+  {
+    province_name: 'Sumatera Barat',
+    name: 'Rendang',
+    type: CulinaryType.MAKANAN,
+    description: 'Daging sapi yang dimasak dengan suhu rendah dalam waktu lama dengan santan dan aneka rempah-rempah.',
+    image_url: 'https://example.com/culinary/rendang.jpg',
+  },
+  {
+    province_name: 'Riau',
+    name: 'Gulai Ikan Patin',
+    type: CulinaryType.MAKANAN,
+    description: 'Potongan ikan patin yang dimasak dalam kuah kuning bersantan dengan rasa khas tempoyak (durian fermentasi) atau asam pedas.',
+    image_url: 'https://example.com/culinary/gulai-patin.jpg',
+  },
+  {
+    province_name: 'Kepulauan Riau',
+    name: 'Gonggong',
+    type: CulinaryType.MAKANAN,
+    description: 'Siput laut rebus khas perairan Kepri, dimakan dengan cara dicungkil dan dicocol sambal.',
+    image_url: 'https://example.com/culinary/gonggong.jpg',
+  },
+  {
+    province_name: 'Jambi',
+    name: 'Tempoyak',
+    type: CulinaryType.MAKANAN,
+    description: 'Masakan yang berasal dari buah durian yang difermentasi, biasanya dimasak dengan ikan patin atau mujair.',
+    image_url: 'https://example.com/culinary/tempoyak.jpg',
+  },
+  {
+    province_name: 'Sumatera Selatan',
+    name: 'Pempek',
+    type: CulinaryType.JAJANAN,
+    description: 'Makanan yang terbuat dari daging ikan yang digiling lembut yang dicampur tepung kanji, disajikan dengan kuah Cuko.',
+    image_url: 'https://example.com/culinary/pempek.jpg',
+  },
+  {
+    province_name: 'Kepulauan Bangka Belitung',
+    name: 'Mie Belitung',
+    type: CulinaryType.MAKANAN,
+    description: 'Mie kuning yang disiram kuah udang kental gurih, disajikan dengan potongan tahu, tauge, mentimun, dan emping.',
+    image_url: 'https://example.com/culinary/mie-belitung.jpg',
+  },
+  {
+    province_name: 'Bengkulu',
+    name: 'Pendap',
+    type: CulinaryType.MAKANAN,
+    description: 'Ikan yang dibumbui dengan bumbu khusus, kelapa parut, lalu dibungkus daun talas dan direbus berjam-jam.',
+    image_url: 'https://example.com/culinary/pendap.jpg',
+  },
+  {
+    province_name: 'Lampung',
+    name: 'Seruit',
+    type: CulinaryType.MAKANAN,
+    description: 'Makanan khas berupa ikan bakar yang disajikan dengan sambal terasi, tempoyak, dan lalapan.',
+    image_url: 'https://example.com/culinary/seruit.jpg',
+  },
+
+  // --- JAWA ---
+  {
+    province_name: 'DKI Jakarta',
+    name: 'Kerak Telor',
+    type: CulinaryType.JAJANAN,
+    description: 'Makanan dari beras ketan putih, telur ayam/bebek, ebi (udang kering), dan kelapa sangrai.',
+    image_url: 'https://example.com/culinary/kerak-telor.jpg',
+  },
+  {
+    province_name: 'Banten',
+    name: 'Sate Bandeng',
+    type: CulinaryType.MAKANAN,
+    description: 'Ikan bandeng yang durinya sudah dihilangkan, dagingnya dihancurkan, dibumbui, lalu dimasukkan kembali ke kulitnya dan dibakar.',
+    image_url: 'https://example.com/culinary/sate-bandeng.jpg',
+  },
+  {
+    province_name: 'Jawa Barat',
+    name: 'Batagor',
+    type: CulinaryType.JAJANAN,
+    description: 'Singkatan dari Bakso Tahu Goreng, disajikan dengan bumbu kacang, kecap manis, dan perasan jeruk limau.',
+    image_url: 'https://example.com/culinary/batagor.jpg',
+  },
+  {
+    province_name: 'Jawa Tengah',
+    name: 'Lumpia Semarang',
+    type: CulinaryType.JAJANAN,
+    description: 'Rolade berisi rebung, telur, dan daging ayam/udang. Bisa disajikan basah atau digoreng.',
+    image_url: 'https://example.com/culinary/lumpia.jpg',
+  },
+  {
+    province_name: 'DI Yogyakarta',
+    name: 'Gudeg',
+    type: CulinaryType.MAKANAN,
+    description: 'Makanan dari nangka muda yang dimasak dengan santan selama berjam-jam, rasanya cenderung manis.',
+    image_url: 'https://example.com/culinary/gudeg.jpg',
+  },
+  {
+    province_name: 'Jawa Timur',
+    name: 'Rawon',
+    type: CulinaryType.MAKANAN,
+    description: 'Sup daging sapi berkuah hitam pekat yang berasal dari kluwek, disajikan dengan tauge pendek.',
+    image_url: 'https://example.com/culinary/rawon.jpg',
+  },
+
+  // --- BALI & NUSA TENGGARA ---
+  {
+    province_name: 'Bali',
+    name: 'Ayam Betutu',
+    type: CulinaryType.MAKANAN,
+    description: 'Ayam atau bebek utuh yang berisi bumbu, kemudian dipanggang dalam api sekam.',
+    image_url: 'https://example.com/culinary/ayam-betutu.jpg',
+  },
+  {
+    province_name: 'Nusa Tenggara Barat',
+    name: 'Ayam Taliwang',
+    type: CulinaryType.MAKANAN,
+    description: 'Ayam bakar kampung muda dengan bumbu pedas menyengat khas Lombok.',
+    image_url: 'https://example.com/culinary/ayam-taliwang.jpg',
+  },
+  {
+    province_name: 'Nusa Tenggara Timur',
+    name: 'Se\'i Sapi',
+    type: CulinaryType.MAKANAN,
+    description: 'Daging sapi yang diiris memanjang dan dimasak dengan teknik pengasapan tradisional.',
+    image_url: 'https://example.com/culinary/sei-sapi.jpg',
+  },
+
+  // --- KALIMANTAN ---
+  {
+    province_name: 'Kalimantan Barat',
+    name: 'Choi Pan',
+    type: CulinaryType.JAJANAN,
+    description: 'Kue basah kukus dari tepung beras berisi bengkuang, kucai, atau ebi dengan taburan bawang goreng.',
+    image_url: 'https://example.com/culinary/choipan.jpg',
+  },
+  {
+    province_name: 'Kalimantan Tengah',
+    name: 'Juhu Singkah',
+    type: CulinaryType.MAKANAN,
+    description: 'Sayur rotan muda (umbut rotan) yang dimasak dengan ikan baung dan rempah-rempah.',
+    image_url: 'https://example.com/culinary/juhu-singkah.jpg',
+  },
+  {
+    province_name: 'Kalimantan Selatan',
+    name: 'Soto Banjar',
+    type: CulinaryType.MAKANAN,
+    description: 'Soto ayam berempah harum (kayu manis, biji pala, cengkeh) yang disajikan dengan ketupat dan perkedel.',
+    image_url: 'https://example.com/culinary/soto-banjar.jpg',
+  },
+  {
+    province_name: 'Kalimantan Timur',
+    name: 'Nasi Bekepor',
+    type: CulinaryType.MAKANAN,
+    description: 'Nasi liwet khas Kutai yang dimasak dengan minyak sayur, rempah, dan ikan asin.',
+    image_url: 'https://example.com/culinary/nasi-bekepor.jpg',
+  },
+  {
+    province_name: 'Kalimantan Utara',
+    name: 'Kepiting Soka',
+    type: CulinaryType.MAKANAN,
+    description: 'Olahan kepiting cangkang lunak khas Tarakan yang dimasak saus asam manis atau lada hitam.',
+    image_url: 'https://example.com/culinary/kepiting-soka.jpg',
+  },
+
+  // --- SULAWESI ---
+  {
+    province_name: 'Sulawesi Utara',
+    name: 'Tinutuan (Bubur Manado)',
+    type: CulinaryType.MAKANAN,
+    description: 'Bubur beras yang dicampur dengan labu kuning, singkong, bayam, kangkung, kemangi, dan jagung manis.',
+    image_url: 'https://example.com/culinary/tinutuan.jpg',
+  },
+  {
+    province_name: 'Gorontalo',
+    name: 'Binte Biluhuta',
+    type: CulinaryType.MAKANAN,
+    description: 'Sup jagung siram khas Gorontalo yang dicampur ikan cakalang/udang dan parutan kelapa.',
+    image_url: 'https://example.com/culinary/binte.jpg',
+  },
+  {
+    province_name: 'Sulawesi Tengah',
+    name: 'Kaledo',
+    type: CulinaryType.MAKANAN,
+    description: 'Sup Kaki Lembu Donggala, berupa sup tulang kaki sapi dengan sumsum yang dimasak asam pedas.',
+    image_url: 'https://example.com/culinary/kaledo.jpg',
+  },
+  {
+    province_name: 'Sulawesi Barat',
+    name: 'Bau Peapi',
+    type: CulinaryType.MAKANAN,
+    description: 'Ikan masak berkuah kuning dengan bumbu mandar yang kaya rempah dan rasanya asam pedas.',
+    image_url: 'https://example.com/culinary/bau-peapi.jpg',
+  },
+  {
+    province_name: 'Sulawesi Selatan',
+    name: 'Coto Makassar',
+    type: CulinaryType.MAKANAN,
+    description: 'Soto daging sapi dengan kuah kental yang terbuat dari kacang tanah sangrai yang dihaluskan.',
+    image_url: 'https://example.com/culinary/coto.jpg',
+  },
+  {
+    province_name: 'Sulawesi Tenggara',
+    name: 'Sinonggi',
+    type: CulinaryType.MAKANAN,
+    description: 'Makanan pokok dari pati sagu (mirip Papeda) yang disantap dengan kuah ikan dan sayur bening.',
+    image_url: 'https://example.com/culinary/sinonggi.jpg',
+  },
+
+  // --- MALUKU & PAPUA ---
+  {
+    province_name: 'Maluku',
+    name: 'Gohu Ikan',
+    type: CulinaryType.MAKANAN,
+    description: 'Sashimi ala Ternate/Maluku, ikan tuna mentah dipotong dadu dicampur jeruk nipis, kenari, dan kemangi.',
+    image_url: 'https://example.com/culinary/gohu.jpg',
+  },
+  {
+    province_name: 'Maluku Utara',
+    name: 'Air Guraka',
+    type: CulinaryType.MINUMAN,
+    description: 'Minuman jahe khas Ternate yang dicampur dengan gula aren dan taburan kacang kenari.',
+    image_url: 'https://example.com/culinary/air-guraka.jpg',
+  },
+  {
+    province_name: 'Papua',
+    name: 'Papeda',
+    type: CulinaryType.MAKANAN,
+    description: 'Bubur sagu yang lengket seperti lem, biasanya disajikan dengan ikan tongkol kuah kuning.',
+    image_url: 'https://example.com/culinary/papeda.jpg',
+  },
+  {
+    province_name: 'Papua Barat',
+    name: 'Ikan Kuah Kuning',
+    type: CulinaryType.MAKANAN,
+    description: 'Pasangan sejati Papeda, ikan tongkol/mubar yang dimasak kuah bening kekuningan (kunyit) segar.',
+    image_url: 'https://example.com/culinary/ikan-kuah.jpg',
+  },
+  {
+    province_name: 'Papua Selatan',
+    name: 'Sagu Sep',
+    type: CulinaryType.MAKANAN,
+    description: 'Olahan sagu dan kelapa yang dibakar di atas batu panas (batu bakar), berisi daging rusa atau babi.',
+    image_url: 'https://example.com/culinary/sagu-sep.jpg',
+  },
+  {
+    province_name: 'Papua Tengah',
+    name: 'Kue Bagea',
+    type: CulinaryType.JAJANAN,
+    description: 'Kue kering berbahan dasar sagu, berbentuk bulat dan bertekstur agak keras namun renyah di mulut.',
+    image_url: 'https://example.com/culinary/kue-bagea.jpg',
+  },
+  {
+    province_name: 'Papua Pegunungan',
+    name: 'Udang Selingkuh',
+    type: CulinaryType.MAKANAN,
+    description: 'Udang air tawar dari Sungai Baliem yang memiliki capit besar seperti kepiting (seolah selingkuh).',
+    image_url: 'https://example.com/culinary/udang-selingkuh.jpg',
+  },
+  {
+    province_name: 'Papua Barat Daya',
+    name: 'Ikan Bungkus',
+    type: CulinaryType.MAKANAN,
+    description: 'Mirip pepes, ikan laut dibumbui rempah melimpah, dibungkus daun talas, lalu dibakar.',
+    image_url: 'https://example.com/culinary/ikan-bungkus.jpg',
+  },
+];
+
+export default culinariesData;
