@@ -24,6 +24,8 @@ import { seedMusicalInstruments } from './musial-instrument.seeder';
 import { seedTraditionalDances } from './traditional-dances.seeder';
 import { seedTraditionalHouses } from './traditional-houses.seeder';
 import { seedTraditionalWeapons } from './traditional-weapons.seeder';
+import { seedTraditionalSpots } from './traditional-spots.seeder';
+import { seedRegionalSongs } from './regional-songs.seeder';
 
 config();
 
@@ -62,6 +64,8 @@ const runSeed = async () => {
     // await seedTraditionalDances(dataSource);
     // await seedTraditionalHouses(dataSource);
     // await seedTraditionalWeapons(dataSource);
+    // await seedTraditionalSpots(dataSource);
+    await seedRegionalSongs(dataSource);
     //===== END SEEDER =====
 
     console.log('Seeding completed successfully!');
