@@ -20,8 +20,11 @@ export class AuthController {
   @UseGuards(GoogleOauthGuard)
   async googleAuthRedirect(@Req() req) {
     const result = await this.authService.googleLogin(req);
-    
-    const FRONTEND_URL = this.configService.get<string>('FRONTEND_URL') || 'localhost:3000'
-    return Redirect(`${FRONTEND_URL}/callback?token=${result.access_token}`)
+    const FRONTEND_URL = this.configService.get<string>('FRONTEND_URL') || 'http://localhost:3000';
+
+    return { 
+      url: `${FRONTEND_URL}/callback?token=${result.access_token}`,
+      statusCode: 302
+    };
   }
 }
