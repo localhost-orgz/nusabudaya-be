@@ -10,26 +10,12 @@ import { MusicalInstrumentsModule } from './musical-instruments/musical-instrume
 import { RegionalSongsModule } from './regional-songs/regional-songs.module';
 import { CulinariesModule } from './culinaries/culinaries.module';
 import { TourismSpotsModule } from './tourism-spots/tourism-spots.module';
-import { Province } from './provinces/entities/province.entity';
-import { TraditionalHouse } from './traditional-houses/entities/traditional-house.entity';
-import { TraditionalDance } from './traditional-dances/entities/traditional-dance.entity';
-import { Tradition } from './traditions/entities/tradition.entity';
-import { TraditionalWeapon } from './traditional-weapons/entities/traditional-weapon.entity';
-import { MusicalInstrument } from './musical-instruments/entities/musical-instrument.entity';
-import { RegionalSong } from './regional-songs/entities/regional-song.entity';
-import { Culinary } from './culinaries/entities/culinary.entity';
-import { TourismSpot } from './tourism-spots/entities/tourism-spot.entity';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { User } from './users/entities/user.entity';
 import { QuizzesModule } from './quizzes/quizzes.module';
-import { Quiz } from './quizzes/entities/quiz.entity';
 import { GameResultsModule } from './game-results/game-results.module';
-import { GameResult } from './game-results/entities/game-result.entity';
 import { ImageGuessesModule } from './image-guesses/image-guesses.module';
-import { ImageGuess } from './image-guesses/entities/image-guess.entity';
 import { AchievementsModule } from './achievements/achievements.module';
-import { Achievement } from './achievements/entities/achievement.entity';
 import { AiModule } from './ai/ai.module';
 
 @Module({
