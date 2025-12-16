@@ -1,7 +1,8 @@
-import { Controller, Get, Redirect, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { GoogleOauthGuard } from './guards/google-oauth.guard';
 import { ConfigService } from '@nestjs/config';
+import type { Response } from 'express';
 
 @Controller('auth')
 export class AuthController {
@@ -18,13 +19,10 @@ export class AuthController {
 
   @Get('google/callback')
   @UseGuards(GoogleOauthGuard)
-  async googleAuthRedirect(@Req() req) {
+  async googleAuthRedirect(@Req() req, @Res() res: Response) {
     const result = await this.authService.googleLogin(req);
-    const FRONTEND_URL = this.configService.get<string>('FRONTEND_URL') || 'http://localhost:3000';
+    const FRONTEND_URL = this.configService.get<string>('FRONTEND_URL') || 'localhost:3000';
 
-    return { 
-      url: `${FRONTEND_URL}/callback?token=${result.access_token}`,
-      statusCode: 302
-    };
+    return res.redirect(`${FRONTEND_URL}/callback?token=${result.access_token}`);
   }
 }
