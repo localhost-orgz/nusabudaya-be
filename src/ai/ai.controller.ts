@@ -21,7 +21,7 @@ export class AiController {
       );
     }
 
-    const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/svg'];
     if (!allowedMimeTypes.includes(file.mimetype)) {
       throw new HttpException(
         ResponseHelper.error(
