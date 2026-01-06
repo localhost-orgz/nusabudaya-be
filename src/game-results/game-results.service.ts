@@ -75,7 +75,7 @@ export class GameResultsService {
     userId: string,
     type?: string,
     province_id?: number
-  ): Promise<GameResult[]> {
+  ) {
     const where: any = {
       user: { id: userId }
     };
@@ -85,10 +85,23 @@ export class GameResultsService {
     if (province_id !== undefined) {
       where.province = { id: province_id };
     }
-    return await this.gameResultsRepository.find({
+    const gameResults = await this.gameResultsRepository.find({
       where,
-      relations: ['province', 'user'],
+      relations: ['province'],
     });
+
+    // Calculate total xp
+    const totalXp = gameResults.reduce((acc, result) => acc + (result.xp || 0), 0);
+
+    // Count province badge
+    const badges = await this.achievementsService.findAll(userId);
+    const badgeCount = badges.length;
+
+    return {
+      total_xp: totalXp,
+      badge_count: badgeCount,
+      results: gameResults,
+    };
   }
 
   async findOne(id: number): Promise<GameResult | null> {

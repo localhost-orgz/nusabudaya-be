@@ -26,6 +26,8 @@ import { seedTraditionalHouses } from './traditional-houses.seeder';
 import { seedTraditionalWeapons } from './traditional-weapons.seeder';
 import { seedTraditionalSpots } from './traditional-spots.seeder';
 import { seedRegionalSongs } from './regional-songs.seeder';
+import QuizSeeder from './quiz.seeder';
+import { SeederFactoryManager } from 'typeorm-extension';
 
 config();
 
@@ -56,16 +58,21 @@ const runSeed = async () => {
     await dataSource.initialize();
     console.log('Database connected for seeding...');
 
+    const factoryManager = new SeederFactoryManager();
+
     //===== START SEEDER =====
-    await seedProvinces(dataSource);
-    await seedTraditions(dataSource);
-    await seedCulinaries(dataSource);
-    await seedMusicalInstruments(dataSource);
-    await seedTraditionalDances(dataSource);
-    await seedTraditionalHouses(dataSource);
-    await seedTraditionalWeapons(dataSource);
-    await seedTraditionalSpots(dataSource);
-    await seedRegionalSongs(dataSource);
+    // await seedProvinces(dataSource);
+    // await seedTraditions(dataSource);
+    // await seedCulinaries(dataSource);
+    // await seedMusicalInstruments(dataSource);
+    // await seedTraditionalDances(dataSource);
+    // await seedTraditionalHouses(dataSource);
+    // await seedTraditionalWeapons(dataSource);
+    // await seedTraditionalSpots(dataSource);
+    // await seedRegionalSongs(dataSource);
+
+    const quizSeeder = new QuizSeeder();
+    await quizSeeder.run(dataSource, factoryManager);
     //===== END SEEDER =====
 
     console.log('Seeding completed successfully!');
