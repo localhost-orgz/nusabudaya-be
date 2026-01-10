@@ -88,6 +88,9 @@ export class GameResultsService {
     const gameResults = await this.gameResultsRepository.find({
       where,
       relations: ['province'],
+      order: {
+        id: 'ASC',
+      },
     });
 
     // Calculate total xp

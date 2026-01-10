@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { Culinary } from '../culinaries/entities/culinary.entity';
 import { Province } from '../provinces/entities/province.entity';
 import culinariesData from './data/culinary.data';
+import { CULINARY_IMAGES } from './data/assets/culinary-image.data';
 
 export const seedCulinaries = async (dataSource: DataSource) => {
   const culinaryRepository = dataSource.getRepository(Culinary);
@@ -48,4 +49,23 @@ export const seedCulinaries = async (dataSource: DataSource) => {
       );
     }
   }
+};
+
+export const seedCulinaryImages = async (dataSource: DataSource) => {
+  const repository = dataSource.getRepository(Culinary);
+  
+  console.log('Memulai update gambar kuliner...');
+  
+  for (const [name, url] of Object.entries(CULINARY_IMAGES)) {
+    const result = await repository.update(
+      { name: name }, 
+      { image_url: url }
+    );
+    
+    if (result.affected === 0) {
+      console.warn(`Warning: Provinsi "${name}" tidak ditemukan di database.`);
+    }
+  }
+  
+  console.log('Update logo selesai!');
 };

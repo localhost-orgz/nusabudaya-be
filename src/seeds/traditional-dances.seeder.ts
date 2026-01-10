@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { TraditionalDance } from '../traditional-dances/entities/traditional-dance.entity';
 import { Province } from '../provinces/entities/province.entity';
 import traditionalDancesData from './data/traditional-dances.data';
+import { DANCE_VIDEOS } from './data/assets/dance-image.data';
 
 export const seedTraditionalDances = async (dataSource: DataSource) => {
   const danceRepository = dataSource.getRepository(TraditionalDance);
@@ -46,4 +47,23 @@ export const seedTraditionalDances = async (dataSource: DataSource) => {
       );
     }
   }
+};
+
+export const seedDanceVideos = async (dataSource: DataSource) => {
+  const repository = dataSource.getRepository(TraditionalDance);
+  
+  console.log('Memulai update video tari tradisional...');
+  
+  for (const [danceName, url] of Object.entries(DANCE_VIDEOS)) {
+    const result = await repository.update(
+      { name: danceName }, 
+      { video_url: url } 
+    );
+    
+    if (result.affected === 0) {
+      console.warn(`Warning: Tarian "${danceName}" tidak ditemukan di database.`);
+    }
+  }
+  
+  console.log('Update video tarian selesai!');
 };

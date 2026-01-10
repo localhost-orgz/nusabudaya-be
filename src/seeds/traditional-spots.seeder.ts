@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { TourismSpot } from '../tourism-spots/entities/tourism-spot.entity';
 import { Province } from '../provinces/entities/province.entity';
 import tourismSpotsData from './data/traditional-spots.data';
+import { TOURISM_IMAGES } from './data/assets/tourism-image.data';
 
 export const seedTraditionalSpots = async (dataSource: DataSource) => {
   const spotRepository = dataSource.getRepository(TourismSpot);
@@ -50,4 +51,23 @@ export const seedTraditionalSpots = async (dataSource: DataSource) => {
       );
     }
   }
+};
+
+export const seedTourismImages = async (dataSource: DataSource) => {
+  const repository = dataSource.getRepository(TourismSpot);
+  
+  console.log('Memulai update gambar wisata...');
+  
+  for (const [spotName, url] of Object.entries(TOURISM_IMAGES)) {
+    const result = await repository.update(
+      { name: spotName }, 
+      { image_url: url }
+    );
+    
+    if (result.affected === 0) {
+      console.warn(`Warning: Wisata "${spotName}" tidak ditemukan di database.`);
+    }
+  }
+  
+  console.log('Update gambar wisata selesai!');
 };

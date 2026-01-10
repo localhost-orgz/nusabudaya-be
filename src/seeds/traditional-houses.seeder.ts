@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { TraditionalHouse } from '../traditional-houses/entities/traditional-house.entity';
 import { Province } from '../provinces/entities/province.entity';
 import traditionalHousesData from './data/traditional-houses.data';
+import { HOUSE_IMAGES } from './data/assets/house-image.data';
 
 export const seedTraditionalHouses = async (dataSource: DataSource) => {
   const houseRepository = dataSource.getRepository(TraditionalHouse);
@@ -46,4 +47,23 @@ export const seedTraditionalHouses = async (dataSource: DataSource) => {
       );
     }
   }
+};
+
+export const seedTraditionalHouseImages = async (dataSource: DataSource) => {
+  const repository = dataSource.getRepository(TraditionalHouse);
+  
+  console.log('Memulai update gambar rumah adat...');
+  
+  for (const [houseName, url] of Object.entries(HOUSE_IMAGES)) {
+    const result = await repository.update(
+      { name: houseName }, 
+      { image_url: url }
+    );
+    
+    if (result.affected === 0) {
+      console.warn(`Warning: Rumah Adat "${houseName}" tidak ditemukan di database.`);
+    }
+  }
+  
+  console.log('Update gambar rumah adat selesai!');
 };

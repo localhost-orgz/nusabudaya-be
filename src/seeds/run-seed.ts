@@ -17,17 +17,18 @@ import { GameResult } from '../game-results/entities/game-result.entity';
 import { ImageGuess } from '../image-guesses/entities/image-guess.entity';
 import { Achievement } from '../achievements/entities/achievement.entity';
 
-import { seedProvinces } from './province.seeder';
+import { seedProvinceLogos, seedProvinces } from './province.seeder';
 import { seedTraditions } from './tradition.seeder';
-import { seedCulinaries } from './culinary.seeder';
-import { seedMusicalInstruments } from './musial-instrument.seeder';
-import { seedTraditionalDances } from './traditional-dances.seeder';
-import { seedTraditionalHouses } from './traditional-houses.seeder';
-import { seedTraditionalWeapons } from './traditional-weapons.seeder';
-import { seedTraditionalSpots } from './traditional-spots.seeder';
+import { seedCulinaries, seedCulinaryImages } from './culinary.seeder';
+import { seedMusicalInstrumentImages, seedMusicalInstruments } from './musial-instrument.seeder';
+import { seedDanceVideos, seedTraditionalDances } from './traditional-dances.seeder';
+import { seedTraditionalHouseImages, seedTraditionalHouses } from './traditional-houses.seeder';
+import { seedTraditionalWeapons, seedWeaponImages } from './traditional-weapons.seeder';
+import { seedTourismImages, seedTraditionalSpots } from './traditional-spots.seeder';
 import { seedRegionalSongs } from './regional-songs.seeder';
 import QuizSeeder from './quiz.seeder';
 import { SeederFactoryManager } from 'typeorm-extension';
+import { seedImageGuesses } from './image-guess.seeder';
 
 config();
 
@@ -58,21 +59,31 @@ const runSeed = async () => {
     await dataSource.initialize();
     console.log('Database connected for seeding...');
 
-    const factoryManager = new SeederFactoryManager();
+    // const factoryManager = new SeederFactoryManager();
 
     //===== START SEEDER =====
-    await seedProvinces(dataSource);
-    await seedTraditions(dataSource);
-    await seedCulinaries(dataSource);
-    await seedMusicalInstruments(dataSource);
-    await seedTraditionalDances(dataSource);
-    await seedTraditionalHouses(dataSource);
-    await seedTraditionalWeapons(dataSource);
-    await seedTraditionalSpots(dataSource);
-    await seedRegionalSongs(dataSource);
+    // await seedProvinces(dataSource);
+    // await seedTraditions(dataSource);
+    // await seedCulinaries(dataSource);
+    // await seedMusicalInstruments(dataSource);
+    // await seedTraditionalDances(dataSource);
+    // await seedTraditionalHouses(dataSource);
+    // await seedTraditionalWeapons(dataSource);
+    // await seedTraditionalSpots(dataSource);
+    // await seedRegionalSongs(dataSource);
+    await seedImageGuesses(dataSource);
 
-    const quizSeeder = new QuizSeeder();
-    await quizSeeder.run(dataSource, factoryManager);
+    // const quizSeeder = new QuizSeeder();
+    // await quizSeeder.run(dataSource, factoryManager);
+
+    // Assets (image, audio, video)
+    // await seedProvinceLogos(dataSource);
+    // await seedCulinaryImages(dataSource);
+    // await seedTourismImages(dataSource);
+    // await seedTraditionalHouseImages(dataSource);
+    // await seedWeaponImages(dataSource);
+    // await seedDanceVideos(dataSource);
+    // await seedMusicalInstrumentImages(dataSource);
     //===== END SEEDER =====
 
     console.log('Seeding completed successfully!');

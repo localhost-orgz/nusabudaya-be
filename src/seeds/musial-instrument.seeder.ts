@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { MusicalInstrument } from '../musical-instruments/entities/musical-instrument.entity';
 import { Province } from '../provinces/entities/province.entity';
 import musicalInstrumentsData from './data/musical-instrument.data';
+import { MUSIC_IMAGES } from './data/assets/music-image.data';
 
 export const seedMusicalInstruments = async (dataSource: DataSource) => {
   const instrumentRepository = dataSource.getRepository(MusicalInstrument);
@@ -46,4 +47,26 @@ export const seedMusicalInstruments = async (dataSource: DataSource) => {
       );
     }
   }
+};
+
+export const seedMusicalInstrumentImages = async (dataSource: DataSource) => {
+  const repository = dataSource.getRepository(MusicalInstrument);
+  
+  console.log('Memulai update gambar alat musik...');
+  
+  for (const [instrumentName, url] of Object.entries(MUSIC_IMAGES)) {
+    // Mencari berdasarkan nama alat musik
+    // Karena ada "Pikon" 2 kali (Papua Tengah & Pegunungan), kode ini akan mengupdate KEDUANYA dengan URL yang sama.
+    // Jika ingin beda, harus query spesifik dengan provinsi, tapi datamu URL-nya sama persis untuk Pikon.
+    const result = await repository.update(
+      { name: instrumentName }, 
+      { image_url: url }
+    );
+    
+    if (result.affected === 0) {
+      console.warn(`Warning: Alat Musik "${instrumentName}" tidak ditemukan di database.`);
+    }
+  }
+  
+  console.log('Update gambar alat musik selesai!');
 };

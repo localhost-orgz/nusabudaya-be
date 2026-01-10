@@ -20,5 +20,8 @@ export class ImageGuess {
   choices: string[];
 
   @Column()
+  explanation: string;
+
+  @Column()
   answer: string;
 }

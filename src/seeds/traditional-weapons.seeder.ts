@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { TraditionalWeapon } from '../traditional-weapons/entities/traditional-weapon.entity';
 import { Province } from '../provinces/entities/province.entity';
 import traditionalWeaponsData from './data/traditional-weapons.data';
+import { WEAPON_IMAGES } from './data/assets/weapon-image.data';
 
 export const seedTraditionalWeapons = async (dataSource: DataSource) => {
   const weaponRepository = dataSource.getRepository(TraditionalWeapon);
@@ -46,4 +47,23 @@ export const seedTraditionalWeapons = async (dataSource: DataSource) => {
       );
     }
   }
+};
+
+export const seedWeaponImages = async (dataSource: DataSource) => {
+  const repository = dataSource.getRepository(TraditionalWeapon);
+  
+  console.log('Memulai update gambar senjata...');
+  
+  for (const [weaponName, url] of Object.entries(WEAPON_IMAGES)) {
+    const result = await repository.update(
+      { name: weaponName }, 
+      { image_url: url }
+    );
+    
+    if (result.affected === 0) {
+      console.warn(`Warning: Senjata "${weaponName}" tidak ditemukan di database.`);
+    }
+  }
+  
+  console.log('Update gambar senjata selesai!');
 };
